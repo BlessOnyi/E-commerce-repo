@@ -60,7 +60,7 @@ const products = [
 ];
 
 function myProducts() {
-    let displayProducts = ""
+    let displayProducts = "";
     products.forEach((product) =>{
         displayProducts +=`
         <div class="col-md-4 mb-5">
@@ -79,31 +79,12 @@ function myProducts() {
 
          </div>
         </div>
-        `
-        document.getElementById("product").innerHTML = displayProducts;
-    })
+        `;
+    });
+
+    // Set the innerHTML outside the loop
+    document.getElementById("product").innerHTML = displayProducts;
     
 }
 myProducts();
 
-const myForm = document.getElementById("myForm")
-const email = document.getElementById("email")
-const password = document.getElementById("password")
-
-const title = document.getElementById("title");
-const nameField= document.getElementById("nameField");
-const signupBtn = document.getElementById("signupBtn");
-const signinBtn = document.getElementById("signinBtn");
-
-myForm.addEventListener("submit",formEvent);
-function formEvent(e) {
-    e.prevent.Default()
-    console.log("Form Submitted");
-}
-
-signinBtn.onclick = function () {
-    nameField.style.maxHeight = "0";
-    title.innerTML ="Sign In"
-    signupBtn.classList.add("disable")
-    signinBtn.classList.remove("disable")
-}
