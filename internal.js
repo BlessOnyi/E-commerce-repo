@@ -6,13 +6,13 @@
 
 
 const products = [
-    { 
-       id: 1,
-      name: "shoe", 
-      image: "./image/menshoes2.jpg",
-      category: "men",
-       price: 400,
-        description: 
+    {
+        id: 1,
+        name: "shoe",
+        image: "./image/menshoes2.jpg",
+        category: "men",
+        price: '$30',
+        description:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
     {
@@ -20,8 +20,8 @@ const products = [
         name: "laptop",
         image: "./image/laptop.jpg",
         category: "electronics",
-        price: 400000, description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
+        price: '$250',
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
 
     {
@@ -29,7 +29,7 @@ const products = [
         name: "Apple laptop",
         image: "./image/applelaptop.jpg",
         category: "electronics",
-        price: 500000,
+        price: '$320',
         description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
 
@@ -38,53 +38,97 @@ const products = [
         name: "bag",
         image: "./image/bagmen.jpg",
         category: "men",
-        price: 500,
-        description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
+        price: '$45',
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
     {
         id: 5,
         name: "bag",
         image: "./image/bagwomen.jpg",
         category: "women",
-        price: 500,
-        description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
+        price: '$20',
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
     {
         id: 6,
         name: "necklace",
         image: "./image/necklace.jpg",
         category: "women",
-        price: 500,
-        description:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
+        price: '$15',
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minim.",
     },
 ];
 
-function myProducts() {
-    let displayProducts = "";
-    products.forEach((product) =>{
-        displayProducts +=`
-        <div class="col-md-4 mb-5">
-        <div class="card" style="">
-            <img src="${product.image}" class="card-img-top" alt="..." width= "50%">
-            <h4 class="text">${product.name}</h4>
-            <h4 class="text">${product.category}</h4>
-            <hr>
-            <h4 class="text">${product.price}</h4>
-            <h4 class="text">${product.description}</h4>
-            <hr>
-            <i class="fa-brands fa-whatsapp"></i>
-            <i class="bi bi-twitter"></i>
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-instagram"></i>
+// console.log(products.slice(0, 8));
+function filterProduct() {
+    const filterButtons = document.querySelectorAll(".filter-button")
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const categoryFilter = e.target.dataset.filter
+            const productFilter = products.filter((product) => {
+                return product.category === categoryFilter || categoryFilter === "all";
+            }
 
-         </div>
+                // console.log(product)
+            )
+            myProducts(productFilter)
+            // console.log(productFilter);
+
+        })
+    })
+    console.log(filterButtons);
+}
+filterProduct()
+
+function myProducts(productList) {
+    console.log(productList);
+
+    let displayProducts = "";
+    if (productList) {
+        productList.map((product) => {
+            displayProducts += `
+        <div class="col-md-4 mb-5">
+            <div class="card  card-section" style="" >
+                <img src="${product.image}" class="card-img-top" alt="..." width= "50%">
+                <h4 class="text">${product.name}</h4>
+                <h4 class="text">${product.price}</h4>
+                <hr>
+                <h5 class="text">${product.description}</h5>
+                <hr>
+                <button class = "btn btn-success">Add to Cart</button>
+               
+            </div>
+            
+        
         </div>
-        `;
-    });
+            `;
+        });
+    } else {
+        products.slice(0, 3).map((product) => {
+            displayProducts += `
+         <div class="col-md-4 mb-5">
+             <div class="card  card-section" style="" >
+                <img src="${product.image}" class="card-img-top" alt="..." width= "50%">
+                <h4 class="text">${product.name}</h4>
+                <h4 class="text">${product.price}</h4>
+                <i class="fa-sharp fa-regular fa-plus-large"></i>
+                <hr>
+                <h5 class="text">${product.description}</h5>
+                <hr>
+                <button class = "btn btn-success">Add to Cart</button>
+             </div>
+         </div>
+            `;
+        });
+
+    }
+
+
 
     // Set the innerHTML outside the loop
     document.getElementById("product").innerHTML = displayProducts;
-    
+
 }
 myProducts();
+
 

@@ -32,7 +32,11 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="./form.html" class="signUp">Sign Up</a>
+                <a class="nav-link " href="./form.html" class="signIn">Sign In</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href="./form2.html" class="signUp">Sign Up</a>
               </li>
               
             </ul>
@@ -41,12 +45,16 @@
       </nav>
     <div class="container">
       <div class="form-box">
-        <h1 id="title" >Sign up</h1>
+        <h1 id="title" >Sign In</h1>
         <form method="post" id="myForm" >
-            <!-- <div class="input-group"> -->
+              <h6 class="output"></h6>
               <div class="input-field" id="nameField" >
                 <i class="fa-solid fa-user"></i>
-                <input type="text" name="Username" id="username"  placeholder="Your Name">
+                <input type="text" name="firstname" id="firstname"  placeholder="First Name">
+              </div> <br>
+              <div class="input-field" id="nameField" >
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="lastname" id="lastname"  placeholder="Last Name">
               </div> <br>
               <div class="input-field">
                 <i class="fa-solid fa-envelope"></i>
@@ -56,11 +64,9 @@
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" id="password" placeholder="Password">
               </div>
-            <!-- </div> -->
             <p>Forgotten paasword?, <a href="#">Click Here</a> </p>
             <div class="btn-field">
-              <button type="submit" id="signupBtn" >Sign Up</button>
-              <button type="submit" id="signinBtn"  class="disable">Sign In</button>
+              <button type="submit" id="signinBtn" >Sign In</button>
             </div>
         </form>
       </div>
